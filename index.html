@@ -48,7 +48,7 @@ button,input,select,textarea{font:inherit}.nav{height:76px;background:#fff;displ
   <div class="actions"><button class="iconBtn" onclick="openWishlist()">♡ <span id="wishCount" class="badge">0</span></button><button class="iconBtn" onclick="openCart()">🛍️ <span id="cartCount" class="badge">0</span></button><button class="iconBtn" onclick="openAdmin()">⚙️</button></div>
 </nav>
 
-<!-- HERO SLIDER (5 SECONDS TIMING) -->
+<!-- HERO SLIDER -->
 <div class="hero">
   <div class="slides-track" id="slidesTrack"></div>
   <button class="prev" onclick="moveSlide(-1)">❮</button>
@@ -182,11 +182,16 @@ const defaultStore={
   {id:1,name:"Haldi Guro",en:"Turmeric Powder",cat:"Turmeric",bn:"হলুদ গুঁড়ো",desc:"Deep Yellow Color, Strong Aroma",image:"",variants:[{size:"10g",price:5},{size:"50g",price:25},{size:"100g",price:40},{size:"250g",price:90},{size:"1kg",price:330},{size:"100kg",price:30000}]},
   {id:2,name:"Lonka Guro",en:"Mirchi Powder",cat:"Chilli",bn:"লঙ্কা গুঁড়ো",desc:"Jhaldar, Pure Red",image:"",variants:[{size:"10g",price:7},{size:"50g",price:30},{size:"100g",price:50},{size:"250g",price:115},{size:"1kg",price:420},{size:"100kg",price:40000}]},
   {id:3,name:"Dhone Guro",en:"Dhaniya Powder",cat:"Coriander",bn:"ধনে গুঁড়ো",desc:"Fresh Ground",image:"",variants:[{size:"10g",price:4},{size:"50g",price:20},{size:"100g",price:35},{size:"250g",price:80},{size:"1kg",price:290},{size:"100kg",price:27000}]},
-  {id:5,name:"Atta",en:"Wheat Flour",cat:"Atta",group:"Flour",bn:"আটা",desc:"100% Whole Wheat, Freshly Ground & Pure",image:"",variants:[{size:"500g",price:25},{size:"1kg",price:45},{size:"5kg",price:220},{size:"10kg",price:430}]}
+  {id:4,name:"Jira Guro",en:"Cumin Powder",cat:"Cunim",bn:"জিরে গুঁড়ো",desc:"Pure Aromatic Cumin Powder",image:"",variants:[{size:"10g",price:6},{size:"50g",price:35},{size:"100g",price:65},{size:"250g",price:150},{size:"1kg",price:550}]},
+  {id:5,name:"Gol Morich Guro",en:"Black Pepper Powder",cat:"Pepper",bn:"গোল মরিচ গুঁড়ো",desc:"Sharp & Spicy Fresh Ground Pepper",image:"",variants:[{size:"10g",price:10},{size:"50g",price:50},{size:"100g",price:95},{size:"250g",price:220}]},
+  {id:6,name:"Atta",en:"Wheat Flour",cat:"Atta",group:"Flour",bn:"আটা",desc:"100% Whole Wheat, Freshly Ground & Pure",image:"",variants:[{size:"500g",price:25},{size:"1kg",price:45},{size:"5kg",price:220},{size:"10kg",price:430}]},
+  {id:7,name:"Maida",en:"Refined Flour",cat:"Maida",group:"Flour",bn:"ময়দা",desc:"Super Fine Quality Refined Flour",image:"",variants:[{size:"500g",price:28},{size:"1kg",price:50},{size:"5kg",price:240}]},
+  {id:8,name:"Besan",en:"Gram Flour",cat:"Besan",group:"Flour",bn:"বেসন",desc:"Pure Chana Dal Besan",image:"",variants:[{size:"500g",price:45},{size:"1kg",price:85},{size:"5kg",price:410}]}
  ]};
 
-let store = JSON.parse(localStorage.getItem("saradaStore")) || defaultStore;
-if(!store.slides || store.slides.length < 3) store.slides = defaultStore.slides;
+// FORCE OVERWRITE STORE DATA FROM CODE SO JIRA, MAIDA, BESAN ARE PERMANENTLY INCLUDED
+let store = defaultStore;
+localStorage.setItem("saradaStore", JSON.stringify(defaultStore));
 
 let cart=JSON.parse(localStorage.getItem("saradaCart")||"[]"), wishlist=JSON.parse(localStorage.getItem("saradaWish")||"[]"), category="all";
 
